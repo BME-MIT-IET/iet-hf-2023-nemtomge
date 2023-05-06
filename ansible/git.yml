@@ -1,0 +1,9 @@
+---
+- name: Set up Git user email and name
+  become: true
+  tasks:
+    - name: Set up Git user email and name
+      shell: echo {{ git_user_email }}
+  git_config:
+    name: "{{ git_user_name }}"
+    email: "{{ git_user_email }}"
