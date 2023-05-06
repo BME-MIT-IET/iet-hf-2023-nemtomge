@@ -26,4 +26,10 @@ Vagrant.configure("2") do |config|
     ansible.playbook = "playbook.yml"
     ansible.provisioning_path = "/vagrant"
   end
+
+  config.vm.provision "shell", inline: <<-SHELL
+    echo "Done!"
+    echo "run vagrant reload"
+  SHELL
+
 end
