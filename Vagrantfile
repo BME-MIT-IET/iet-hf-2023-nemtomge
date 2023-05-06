@@ -18,8 +18,8 @@ Vagrant.configure("2") do |config|
   config.vm.provision "shell", inline: <<-SHELL
     sudo apt-get update
     sudo apt-get install -y git
-    #sudo apt-get install -y gnome-core
-    #sudo apt-get install -y openjdk-11-jdk
+    sudo apt-get install -y gnome-core
+    sudo apt-get install -y openjdk-11-jdk
   SHELL
 
   config.vm.provision :ansible_local do |ansible|
