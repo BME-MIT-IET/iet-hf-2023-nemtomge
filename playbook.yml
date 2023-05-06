@@ -1,6 +1,6 @@
 ---
 # Ansible playbook for setting up a virtual machine
-- name: My first play
+- name: "IET HF 2023 - Nemtomge Playbook"
   hosts: all,localhost
   vars_files:
     - values.yml
@@ -13,3 +13,5 @@
         file: ansible/vscode.yml
     - ansible.builtin.include_tasks:
         file: ansible/java.yml
+    - ansible.builtin.include_tasks:
+        file: ansible/our_git_repository.yml
