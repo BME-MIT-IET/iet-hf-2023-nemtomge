@@ -1,0 +1,11 @@
+loadmap map.json 
+start V1 
+set Gencode LA1 Immunity 5 5 
+set Scientist V1 LA1 
+set Numgencodes 4
+give Gencode V1 Stun 10 10 
+give Gencode V1 Dementia 10 10 
+give Gencode V1 Craziness 10 5 
+touch V1
+1
+exit

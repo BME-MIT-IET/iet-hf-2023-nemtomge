@@ -1,0 +1,6 @@
+loadmap map.json
+start V1 V2 
+set Scientist V1 PL1 
+set Scientist V2 ST1 
+show Map
+exit

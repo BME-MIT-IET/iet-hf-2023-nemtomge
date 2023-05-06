@@ -1,0 +1,13 @@
+loadmap map.json  
+start V1  
+set Scientist V1 PL1
+set Material ST1 aminoacid 10
+move V1 ST1
+touch V1  
+0
+move V1 PL1
+give Active V1 Bear 1
+move V1 ST1
+touch V1 
+0
+exit

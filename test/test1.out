@@ -1,0 +1,9 @@
+Map from file map.json loaded
+The game has been started. Players are: V1 V2 
+Scientist V1 set on field PL1 
+Scientist V2 set on field ST1 
+The map consists of these non-empty fields:
+Storage(ST1): 
+ - V2
+Plain(PL1): 
+ - V1 

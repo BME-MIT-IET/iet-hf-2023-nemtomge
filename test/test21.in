@@ -1,0 +1,13 @@
+loadmap map.json 
+start V1 
+set Scientist V1 PL1 
+give Material V1 aminoacid 100 
+give Material V1 nucleotide 100 
+give Gencode V1 Stun 50 50 
+give Active V1 Stun 3 
+craft V1
+1
+has Crafted V1 Stun 
+has Material V1 aminoacid 
+has Material V1 nucleotide
+exit

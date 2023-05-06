@@ -1,0 +1,11 @@
+loadmap map.json
+start V1 V2  
+set Scientist V1 PL1  
+set Scientist V2 PL2  
+give Active V1 Immunity 1 
+give Crafted V2 Craziness 1 
+move V2 PL1 # V2 to moves to the same field as V1  
+use V2 V1 # V2 uses agent on V1  
+1 
+has Active V1 Craziness # should be false
+exit

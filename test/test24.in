@@ -1,0 +1,12 @@
+loadmap map.json
+start V1 V2  
+set Scientist V1 PL1  
+give Gear V1 Gloves  
+set Scientist V2 PL2  
+move V1 PL2
+give Crafted V2 Stun 1 
+use V2 V1  
+1
+has Gear V1 Gloves # should be true 
+has Crafted V1 Stun
+exit

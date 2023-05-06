@@ -1,0 +1,9 @@
+loadmap map.json
+start V1 
+set Scientist V1 PL1 
+give Active V1 Stun 5 
+show Active V1 
+show Map 
+move V1 PL2 
+show Map
+exit

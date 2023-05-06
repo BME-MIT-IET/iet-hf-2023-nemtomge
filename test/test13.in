@@ -1,0 +1,10 @@
+loadmap map.json 
+start V1 
+set Scientist V1 PL1
+set Gear PL1 Coat
+show Gear V1
+give Active V1 Stun 3 
+touch V1 
+0
+show Gear V1
+exit

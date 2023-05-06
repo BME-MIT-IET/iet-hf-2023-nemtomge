@@ -1,0 +1,10 @@
+loadmap map.json 
+start V1 
+set Gencode LA1 Immunity 10 10
+set Scientist V1 PL1 
+move V1 LA1 
+show Gencode V1
+touch V1
+1
+show Gencode V1
+exit

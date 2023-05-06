@@ -1,0 +1,9 @@
+loadmap map.json 
+start V1 
+set Scientist V1 ST1 
+set Material ST1 nucleotide 20 
+show Material V1 
+touch V1 
+1 
+show Material V1
+exit

@@ -1,0 +1,33 @@
+1. Start Game
+2. Scientist Steps on Field
+3. Scientist Cannot Step on Field
+4. Scientist Unable to Move
+5. Scientist Learns Genetic Code
+6. Scientist Wins Game
+7. Scientist Unable to Learn
+8. Genetic Code has been Already Learnt
+9. Invalid Robbery because Victim is Not Stunned
+10. Scientist Robs Material from Other Scientist
+11. Scientist Robs Gear and There is Enough Space
+12. Scientist Robs Gear and There Is Not Enough Space
+13. Scientist Unable to Touch
+14. Scientist Picks up Gear 
+15. Scientist Picks Up and Drops Gear 
+16. Scientist Picks Up Material
+17. Crafts Agent
+18. Scientist tries to craft but doesn’t have enough material 
+19. Scientist tries to craft, but he has dementia
+20. Scientist tries to craft without any known genetic code 
+21. Scientist tries to craft, but he is stunned 
+22. Scientist uses Agent on a Scientist 
+23. Scientist uses Agent on themselves 
+24. Scientist uses Agent on other Scientist who has Gloves
+25. Agent effect blocked by Coat 
+26. Agent effect blocked by Immunity 
+27. Scientist tries to use agent while they are stunned 
+28. Scientist with Bear steps on Storage 
+29. Scientist kills other Scientist
+30. Scientist gets infected by Bear 
+31. Scientist doesn’t get infected by Bear because Immunity 
+32. Gloves disappear after the third use 
+33. Scientist infects other Scientist with Bear 

@@ -1,0 +1,9 @@
+loadmap map.json 
+start V1 
+set Gencode LA1 Stun 30 30 
+set Scientist V1 LA1 
+give Active V1 Dementia 3 
+touch V1
+1
+has Gencode V1 Stun
+exit

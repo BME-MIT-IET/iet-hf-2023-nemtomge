@@ -1,0 +1,13 @@
+loadmap map.json 
+start V1 
+set Scientist V1 PL1 
+give Gear V1 Gloves 
+give Gear V1 Axe 
+give Gear V1 Bag 
+set Gear PL1 Coat 
+show Gear V1
+touch V1 
+1 
+2 
+show Gear V1
+exit

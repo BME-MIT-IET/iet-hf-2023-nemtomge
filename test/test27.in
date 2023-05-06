@@ -1,0 +1,11 @@
+loadmap map.json  
+start V1  
+set Scientist V1 PL1  
+give Crafted V1 Stun 1 
+give Crafted V1 Craziness 1 
+use V1 V1 
+1
+has Active V1 Stun 
+use V1 V1 
+show Active V1
+exit

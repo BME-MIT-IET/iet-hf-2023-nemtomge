@@ -1,0 +1,8 @@
+loadmap map.json 
+start V1 V2 
+set Scientist V1 PL1 
+set Scientist V2 PL1 
+give Material V2 nucleotide 100 
+give Active V2 Stun 3 
+rob V1 V2
+exit

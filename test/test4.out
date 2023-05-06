@@ -1,0 +1,13 @@
+Map from file map.json loaded
+The game has been started. Players are: V1 
+Scientist V1 set on field PL1 
+Scientist V1 has been given active agent Stun time: 5 
+V1's active effects are:
+Stun(5) 
+The map consists of these non-empty fields: 
+Plain(PL1): 
+ - V1 
+Scientist V1 couldn't move
+The map consists of these non-empty fields: 
+Plain(PL1): 
+ - V1

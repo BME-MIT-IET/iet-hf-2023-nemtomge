@@ -1,0 +1,12 @@
+loadmap map.json 
+start V1 V2 
+set Scientist V1 PL1 
+set Scientist V2 PL1 
+give Gear V1 Gloves 
+give Gear V1 Axe 
+give Gear V1 Bag 
+give Gear V2 Coat 
+give Active V2 Stun 3 
+rob V1 V2 
+1
+exit

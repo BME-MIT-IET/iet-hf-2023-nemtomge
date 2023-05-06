@@ -1,0 +1,10 @@
+Map from file map.json loaded
+The game has been started. Players are: V1 V2   
+Scientist V1 set on field PL1 
+Scientist V2 set on field PL2 
+Scientist V1 has been given active agent Bear time: 1 
+Scientist V1 moved to field PL2 
+Scientist V2 has been given gear Axe 
+Scientist V2 has killed scientist V1
+Scientist V1 is not alive 
+Scientist V2 has active agent Bear time: -1

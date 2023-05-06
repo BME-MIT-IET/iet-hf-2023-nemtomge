@@ -1,0 +1,11 @@
+loadmap map.json
+start V1 V2  
+set Scientist V1 PL1  
+set Scientist V2 PL2  
+give Active V1 Bear 1 
+move V1 PL2 # V1 steps on same field as V2  
+give Gear V2 Axe  
+kill V2 V1  
+isAlive V1  
+has Active V2 Bear
+exit

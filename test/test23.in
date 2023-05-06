@@ -1,0 +1,8 @@
+loadmap map.json 
+start V1 
+set Scientist V1 PL1 
+give Crafted V1 Immunity 3 
+use V1 V1 
+1 
+show Active V1
+exit
