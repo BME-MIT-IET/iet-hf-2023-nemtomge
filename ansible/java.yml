@@ -1,5 +1,5 @@
-- name: Install OpenJDK 11 JDK
+- name: Install OpenJDK 17 JDK
   become: true
   apt:
-    name: openjdk-11-jdk
+    name: openjdk-17-jdk
     state: present

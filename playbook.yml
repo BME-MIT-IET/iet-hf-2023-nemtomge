@@ -1,17 +1,13 @@
----
-# Ansible playbook for setting up a virtual machine
 - name: "IET HF 2023 - Nemtomge Playbook"
   hosts: all,localhost
   vars_files:
-    - values.yml
+      - values.yml
   tasks:
-    - ansible.builtin.include_tasks:
-        file: ansible/snap.yml
-    - ansible.builtin.include_tasks:
-        file: ansible/chrome.yml
-    - ansible.builtin.include_tasks:
-        file: ansible/vscode.yml
-    - ansible.builtin.include_tasks:
-        file: ansible/java.yml
-    - ansible.builtin.include_tasks:
-        file: ansible/our_git_repository.yml
+      - ansible.builtin.include_tasks:
+            file: ansible/snap.yml
+      - ansible.builtin.include_tasks:
+            file: ansible/hungarian.yml
+      #- name: Hungarian keyboard layout
+      #  include_tasks: ansible/keyboard.yml
+      - name: Install OpenJDK 17 JDK
+        include_tasks: ansible/java.yml

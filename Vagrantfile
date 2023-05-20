@@ -1,6 +1,6 @@
 Vagrant.configure("2") do |config|
-  config.vm.box = "ubuntu/focal64"
-  config.disksize.size = '50GB'
+  config.vm.box = "ubuntu/jammy64"
+  config.disksize.size = '41GB'
   config.vm.provision :shell, :inline => "sed -i 's|deb http://archive.ubuntu.com.ubuntu|deb mirror://mirrors.ubuntu.com/mirrors.txt|g' /etc/apt/sources.list"
   config.vm.provision "shell", inline: "sed -i '/deb-src/d' /etc/apt/sources.list"
  
@@ -18,8 +18,7 @@ Vagrant.configure("2") do |config|
   config.vm.provision "shell", inline: <<-SHELL
     sudo apt-get update
     sudo apt-get install -y git
-    sudo apt-get install -y gnome-core
-    sudo apt-get install -y openjdk-11-jdk
+    sudo apt-get install -y lubuntu-desktop
   SHELL
 
   config.vm.provision :ansible_local do |ansible|
@@ -28,6 +27,8 @@ Vagrant.configure("2") do |config|
   end
 
   config.vm.provision "shell", inline: <<-SHELL
+    sudo apt-get install -y xkb-data
+    setxkbmap -layout hu
     echo "Done!"
     echo "run vagrant reload"
   SHELL
