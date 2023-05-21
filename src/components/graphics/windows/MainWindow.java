@@ -60,6 +60,7 @@ public class MainWindow {
         exit.addActionListener(e -> System.exit(0));
         menuPanel.add(exit);
         mainFrame.add(menuPanel);
+        mainFrame.revalidate();
     }
 
     /**
