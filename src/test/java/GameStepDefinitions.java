@@ -4,36 +4,55 @@ import components.agent.GeneticCode;
 import components.agent.Immunity;
 import components.field.Field;
 import components.field.Lab;
+import components.scientist.Scientist;
+import io.cucumber.java.bs.A;
 import io.cucumber.java.en.And;
+import io.cucumber.java.en.Given;
+
+import java.util.*;
 
 public class GameStepDefinitions {
 
-    public static Field startField;
-    public static Field endField;
-    public static Lab lab;
+    public static ArrayList<Scientist> scientists;
+    public static Hashtable<String, Field> fields;
 
-    @And("game has two field")
-    public void game_has_two_field(){
-        startField = new Field();
-        endField = new Field();
-        startField.setNeighbour(endField.toString());
-        endField.setNeighbour(startField.toString());
+    @Given("game has {int} {Scientist}(s)")
+    public void game_has_scientists(int count, Scientist scientist){
+        scientists = new ArrayList<>();
+        for(int i = 0; i<count; ++i)
+            scientists.add(scientist);
     }
-    @And("game has one laboratory with Immunity genetic code")
-    public void game_has_one_laboratory_with_immunity_genetic_code(){
-        lab = new Lab(false);
-        Immunity agentImmunity = new Immunity(10);
-        GeneticCode genCodeImmunity = new GeneticCode(agentImmunity);
-        lab.add(genCodeImmunity);
+    @And("game has {int} {Field}(s)")
+    public void game_has_fields(int count, Field field){
+        fields = new Hashtable<>();
+        for(int i = 0; i<count; ++i)
+            fields.put(String.format("field-%d",i), field);
+    }
+    @And("game has {int} {Lab} with {word} BearDance")
+    public void game_has_laboratory(int count, Lab Lab, String option){
+        boolean hasBearDance = option.equals("yes");
+        for(int i = 0; i<count; ++i){
+            Lab.setHasBear(hasBearDance);
+            fields.put(String.format("lab-%d", i), Lab);
+        }
+    }
+    @And("{int} st/nd/rd/th lab has genetic code {Immunity} with {int} duration")
+    public void lab_has_genetic_code_with_duration(int index, Immunity immunity, int duration){
+        var lab = (Lab)fields.get(String.format("lab-%d", index-1));
+        immunity.setDuration(duration);
+        GeneticCode genCode = new GeneticCode(immunity);
+        lab.add(genCode);
     }
     @And("all of the fields are neighbours to each other")
     public void all_of_the_fields_are_neighbours_to_each_other(){
-        startField.setNeighbour(endField.toString());
-        startField.setNeighbour(lab.toString());
-        endField.setNeighbour(startField.toString());
-        endField.setNeighbour(lab.toString());
-        lab.setNeighbour(startField.toString());
-        lab.setNeighbour(endField.toString());
+        ArrayList<Field> fieldList = new ArrayList<>(fields.values());
+        for(int i = 0; i<fieldList.size()-1; i++){
+            for(int j = i+1; j< fieldList.size(); j++){
+                Field a = fieldList.get(i);
+                Field b = fieldList.get(j);
+                a.setNeighbour(b.toString());
+                b.setNeighbour(a.toString());
+            }
+        }
     }
-
 }
