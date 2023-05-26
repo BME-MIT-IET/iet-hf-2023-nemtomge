@@ -1,4 +1,4 @@
-package test.java;
+package test.java.stepdefinitions;
 
 import components.agent.GeneticCode;
 import components.agent.Immunity;
@@ -30,15 +30,16 @@ public class GameStepDefinitions {
     }
     @And("game has {int} {Lab} with {word} BearDance")
     public void game_has_laboratory(int count, Lab Lab, String option){
+        fields = (fields == null) ? new Hashtable<>() : fields;
         boolean hasBearDance = option.equals("yes");
         for(int i = 0; i<count; ++i){
             Lab.setHasBear(hasBearDance);
             fields.put(String.format("lab-%d", i), Lab);
         }
     }
-    @And("{int}(st/nd/rd/th) lab has genetic code {Immunity} with {int} duration")
-    public void lab_has_genetic_code_with_duration(int index, Immunity immunity, int duration){
-        var lab = (Lab)fields.get(String.format("lab-%d", index-1));
+    @And("{int}st/nd/rd/th lab has genetic code {Immunity} with {int} duration")
+    public void lab_has_genetic_code_with_duration(int fieldIndex, Immunity immunity, int duration){
+        var lab = (Lab)fields.get(String.format("lab-%d", fieldIndex));
         immunity.setDuration(duration);
         GeneticCode genCode = new GeneticCode(immunity);
         lab.add(genCode);
