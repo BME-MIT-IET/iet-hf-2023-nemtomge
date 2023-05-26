@@ -36,7 +36,7 @@ public class GameStepDefinitions {
             fields.put(String.format("lab-%d", i), Lab);
         }
     }
-    @And("{int} st/nd/rd/th lab has genetic code {Immunity} with {int} duration")
+    @And("{int}(st/nd/rd/th) lab has genetic code {Immunity} with {int} duration")
     public void lab_has_genetic_code_with_duration(int index, Immunity immunity, int duration){
         var lab = (Lab)fields.get(String.format("lab-%d", index-1));
         immunity.setDuration(duration);
