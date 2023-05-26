@@ -11,6 +11,7 @@ import io.cucumber.java.ParameterType;
 
 public class ParameterTypes {
     private final int INIT_DURATION = 10;
+
     @ParameterType("Scientist")
     public Scientist Scientist(String text) {
         return new Scientist();
@@ -18,7 +19,9 @@ public class ParameterTypes {
     @ParameterType("Field")
     public Field Field(String text){ return new Field(); }
     @ParameterType("Lab")
-    public Lab Lab(String text){ return new Lab(false); }
+    public Lab Lab(String text){
+        boolean INIT_BEAR_DANCE = false;
+        return new Lab(INIT_BEAR_DANCE); }
     @ParameterType("Immunity")
     public Immunity Immunity(String text) { return new Immunity(INIT_DURATION); }
     @ParameterType("Stun")

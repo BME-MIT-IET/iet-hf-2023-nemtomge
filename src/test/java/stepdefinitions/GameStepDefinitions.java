@@ -5,7 +5,6 @@ import components.agent.Immunity;
 import components.field.Field;
 import components.field.Lab;
 import components.scientist.Scientist;
-import io.cucumber.java.bs.A;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 
@@ -13,39 +12,39 @@ import java.util.*;
 
 public class GameStepDefinitions {
 
-    public static ArrayList<Scientist> scientists;
+    public static Hashtable<String, Scientist> scientists;
     public static Hashtable<String, Field> fields;
 
-    @Given("game has {int} {Scientist}(s)")
-    public void game_has_scientists(int count, Scientist scientist){
-        scientists = new ArrayList<>();
-        for(int i = 0; i<count; ++i)
-            scientists.add(scientist);
+    @Given("game has {Scientist} named {word}")
+    public void game_has_scientists(Scientist scientist, String scientistName){
+        // Arrange
+        scientists = (scientists == null) ? new Hashtable<>() : scientists;
+        scientists.put(scientistName, scientist);
     }
-    @And("game has {int} {Field}(s)")
-    public void game_has_fields(int count, Field field){
-        fields = new Hashtable<>();
-        for(int i = 0; i<count; ++i)
-            fields.put(String.format("field-%d",i), field);
-    }
-    @And("game has {int} {Lab} with {word} BearDance")
-    public void game_has_laboratory(int count, Lab Lab, String option){
+    @And("game has {Field} named {word}")
+    public void game_has_fields(Field field, String fieldName){
+        // Arrange
         fields = (fields == null) ? new Hashtable<>() : fields;
-        boolean hasBearDance = option.equals("yes");
-        for(int i = 0; i<count; ++i){
-            Lab.setHasBear(hasBearDance);
-            fields.put(String.format("lab-%d", i), Lab);
-        }
+        fields.put(fieldName, field);
     }
-    @And("{int}st/nd/rd/th lab has genetic code {Immunity} with {int} duration")
-    public void lab_has_genetic_code_with_duration(int fieldIndex, Immunity immunity, int duration){
-        var lab = (Lab)fields.get(String.format("lab-%d", fieldIndex));
+    @And("game has {Lab} with {word} BearDance named {word}")
+    public void game_has_laboratory(Lab Lab, String option, String fieldName){
+        // Arrange
+        fields = (fields == null) ? new Hashtable<>() : fields;
+        Lab.setHasBear(option.equals("yes"));
+        fields.put(fieldName, Lab);
+    }
+    @And("{word} has genetic code {Immunity} with {int} duration")
+    public void lab_has_genetic_code_with_duration(String labName, Immunity immunity, int duration){
+        // Arrange
+        var lab = (Lab)fields.get(labName);
         immunity.setDuration(duration);
         GeneticCode genCode = new GeneticCode(immunity);
         lab.add(genCode);
     }
     @And("all of the fields are neighbours to each other")
     public void all_of_the_fields_are_neighbours_to_each_other(){
+        // Arrange
         ArrayList<Field> fieldList = new ArrayList<>(fields.values());
         for(int i = 0; i<fieldList.size()-1; i++){
             for(int j = i+1; j< fieldList.size(); j++){

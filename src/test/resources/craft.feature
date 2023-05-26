@@ -3,16 +3,17 @@ Feature: Testing scenarios about scientist crafting during pacific agents
   Checking scientist crafting during stun
 
   Background:
-    Given game has 1 Scientist
-    And game has 1 Lab with no BearDance
-    And 0st lab has genetic code Immunity with 10 duration
-    And 0st scientist's position is the 0st lab
-    And 0st scientist learns genetic code
+    Given game has Scientist named M.Elek
+    And game has Lab with no BearDance named Laboratory
+    And Laboratory has genetic code Immunity with 10 duration
+    And M.Elek's position is Laboratory
+    And M.Elek touches the lab
+    And M.Elek learns the genetic code on lab
 
   Scenario Outline: Crafting
-    Given 0st scientist has active <agent> with <duration>
-    When 0st scientist crafts
-    Then 0st scientist inventory crafted should be empty
+    Given M.Elek has active <agent> with <duration>
+    When M.Elek crafts from genetic code
+    Then M.Elek inventory called crafted should be empty
 
     Examples:
       |    agent | duration |
