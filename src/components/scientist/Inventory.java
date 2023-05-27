@@ -140,8 +140,6 @@ public class Inventory {
     public boolean add(GeneticCode gc) {
         Skeleton.printCall("Inventory.add(GeneticCode)");
 
-        //Eltárolom a HashSet hosszát, hogy később megvizsgálhassam, hogy nőtt-e ez az érték
-        int gcOldSize = knownGeneticCodes.size();
         // genetic code hozzáadása a listához
         for (GeneticCode tgc : knownGeneticCodes) {
             if (tgc.equals(gc)) {
