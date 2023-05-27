@@ -93,8 +93,6 @@ public class Scientist {
         if (inventory.validateAction(LEARN) == LEARN && inventory.add(gc)) {
             // Scientist tud tanulni
             // hozzáadás inventoryhoz. az inventory eldobja a duplikátumot
-                // az inventorytól elkéri a megtanult genetikai kódokat
-                Set<GeneticCode> knownGeneticCodes = inventory.getKnownGeneticCodes();
                 // a gamenek elküldi a megtanult kódok számát
                 return Game.won(this);
         }
