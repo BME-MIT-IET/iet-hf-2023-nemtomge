@@ -15,24 +15,24 @@ public class GameStepDefinitions {
     public static Hashtable<String, Scientist> scientists;
     public static Hashtable<String, Field> fields;
 
-    @Given("game has {Scientist} named {word}")
-    public void game_has_scientists(Scientist scientist, String scientistName){
+    @Given("game has/have {Scientist}(s) named:")
+    public void game_has_scientist(Scientist scientist, List<String> scientistNames){
         // Arrange
         scientists = (scientists == null) ? new Hashtable<>() : scientists;
-        scientists.put(scientistName, scientist);
+        scientistNames.forEach(name -> scientists.put(name, scientist));
     }
-    @And("game has {Field} named {word}")
-    public void game_has_fields(Field field, String fieldName){
+    @And("game has/have {Field}(s) named:")
+    public void game_has_field(Field field, List<String> fieldNames){
         // Arrange
         fields = (fields == null) ? new Hashtable<>() : fields;
-        fields.put(fieldName, field);
+        fieldNames.forEach(name -> fields.put(name, field));
     }
-    @And("game has {Lab} with {word} BearDance named {word}")
-    public void game_has_laboratory(Lab Lab, String option, String fieldName){
+    @And("game has {Lab} with {word} BearDance named:")
+    public void game_has_laboratory(Lab Lab, String option, List<String> fieldNames){
         // Arrange
         fields = (fields == null) ? new Hashtable<>() : fields;
         Lab.setHasBear(option.equals("yes"));
-        fields.put(fieldName, Lab);
+        fieldNames.forEach(name -> fields.put(name, Lab));
     }
     @And("{word} has genetic code {Immunity} with {int} duration")
     public void lab_has_genetic_code_with_duration(String labName, Immunity immunity, int duration){

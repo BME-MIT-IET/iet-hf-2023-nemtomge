@@ -2,8 +2,8 @@ package test.java.stepdefinitions;
 
 import components.agent.Agent;
 import components.agent.GeneticCode;
-import components.agent.Stun;
-import components.scientist.ActnLabel;
+import components.field.Field;
+import components.gear.Gear;
 import components.scientist.Inventory;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
@@ -17,15 +17,8 @@ import static org.junit.Assert.*;
 public class ScientistStepDefinitions {
 
     private GeneticCode touchedGenCode;
-
-    @Given("{word} has got the virus {Stun} with {int} duration")
-    public void scientist_has_got_virus(String scientistName, Stun stun, int duration){
-        // Arrange
-        stun.setDuration(duration);
-        stun.actionMgmt(ActnLabel.MOVE);
-        scientists.get(scientistName).getInventory().addActiveAgent(stun);
-    }
-    @Given("{word} has active {agent} with {int}")
+    private boolean killed;
+    @Given("{word} has active {agent} with {int} duration")
     public void scientist_has_active_agent(String scientistName, Agent agent, int duration){
         // Arrange
         agent.setDuration(duration);
@@ -35,6 +28,16 @@ public class ScientistStepDefinitions {
     public void scientists_position_is(String scientistName, String fieldName){
         // Arrange
         scientists.get(scientistName).setField(fields.get(fieldName));
+    }
+    @And("{word} touches the lab")
+    public void scientist_starts_touching(String scientistName){
+        // Arrange
+        touchedGenCode = scientists.get(scientistName).touch().getCode();
+    }
+    @And("{word} has gear {gear}")
+    public void scientist_has_gear(String scientistName, Gear gear){
+        // Arrange
+        scientists.get(scientistName).getInventory().add(gear);
     }
     @When("{word} moves")
     public void scientist_moves(String scientistName){
@@ -51,41 +54,73 @@ public class ScientistStepDefinitions {
         // Act
         scientists.get(scientistName).craft(touchedGenCode);
     }
-    @And("{word} touches the lab")
-    public void scientist_starts_touching(String scientistName){
+    @When("{word} kills {word}")
+    public void scientist_kills(String scientistAName, String scientistBName){
         // Act
-        touchedGenCode = scientists.get(scientistName).touch().getCode();
+        killed = scientists.get(scientistAName).kill(scientists.get(scientistBName));
     }
     @And("{word} learns the genetic code on lab")
     public void scientist_learns_the_genetic_code(String scientistName){
         // Act
         scientists.get(scientistName).learn(touchedGenCode);
     }
+    private void fieldsAreTheSameSuccess(Field fA, Field fB){
+        // Assert
+        assertSame(fA, fB);
+    }
+    private void fieldsAreNotTheSameSuccess(Field fA, Field fB){
+        // Assert
+        assertNotSame(fA, fB);
+    }
     @Then("{word} current position {string} {word}")
     public void scientist_current_position_should_be(String scientistName, String shouldMatch, String fieldName){
-        // Assert
         var scientistCurrentField = scientists.get(scientistName).getField();
         var scientistOldField = fields.get(fieldName);
         if(shouldMatch.equals("should be"))
-            assertSame(scientistOldField, scientistCurrentField);
+            fieldsAreTheSameSuccess(scientistOldField, scientistCurrentField);
         else if(shouldMatch.equals("should not be"))
-            assertNotSame(scientistOldField, scientistCurrentField);
+            fieldsAreNotTheSameSuccess(scientistOldField, scientistCurrentField);
     }
-    @Then("{word} should have learned the genetic code")
-    public void scientist_should_have_learned_the_genetic_code(String scientistName){
+
+    private void scientistInventoryEmptySuccess(boolean empty){
         // Assert
-        assertTrue(scientists.get(scientistName).getInventory().getKnownGeneticCodes().contains(touchedGenCode));
+        assertTrue(empty);
     }
-    @Then("{word} inventory called {word} should be empty")
-    public void scientist_inventory_should_be(String scientistName, String inventoryType){
+    private void scientistInventoryNotEmptySuccess(boolean empty){
         // Assert
+        assertFalse(empty);
+    }
+    @Then("{word} inventory called {word} {string} empty")
+    public void scientist_inventory_should_be(String scientistName, String inventoryType, String matchText){
         Inventory inventory = scientists.get(scientistName).getInventory();
-        switch(inventoryType){
-            case "crafted": assertTrue(inventory.getCrafted().isEmpty()); break;
-            case "learned": assertTrue(inventory.getKnownGeneticCodes().isEmpty()); break;
-            case "gears": assertTrue(inventory.getGears().isEmpty());
-            case "agents": assertTrue(inventory.getActiveAgents().isEmpty());
+        boolean isEmpty = false;
+        switch (inventoryType){
+            case "crafted": isEmpty = inventory.getCrafted().isEmpty(); break;
+            case "learned": isEmpty = inventory.getKnownGeneticCodes().isEmpty(); break;
+            case "gears": isEmpty = inventory.getGears().isEmpty(); break;
+            case "agents": isEmpty = inventory.getActiveAgents().isEmpty(); break;
             default: break;
         }
+        if (matchText.equals("should be"))
+            scientistInventoryEmptySuccess(isEmpty);
+        else if (matchText.equals("should not be"))
+            scientistInventoryNotEmptySuccess(isEmpty);
+    }
+
+    private void scientistKilledSuccess(){
+        // Assert
+        assertTrue(killed);
+    }
+    private void scientistAliveSuccess(){
+        // Assert
+        assertFalse(killed);
+    }
+    @Then("He/She should be {word}")
+    public void scientist_alive_or_killed(String matchText){
+        // Assert
+        if(matchText.equals("killed"))
+            scientistKilledSuccess();
+        else if(matchText.equals("alive"))
+            scientistAliveSuccess();
     }
 }
