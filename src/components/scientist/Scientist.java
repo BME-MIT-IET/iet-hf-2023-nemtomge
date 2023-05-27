@@ -176,7 +176,7 @@ public class Scientist {
             return false;
         }
         // meg kell nézni, hogy lehet-e egyáltalán geart rabolni:
-        if (this.getInventory().getGears().size() > 0) {
+        if (!this.getInventory().getGears().isEmpty()) {
             // lehet tehát ha nincs elég hely, akkor helyet kell csinálni
             // egészen addig kell próbálkozni amíg nincs elég hely
             while (s.getInventory().getGears().size() >= 3) {
