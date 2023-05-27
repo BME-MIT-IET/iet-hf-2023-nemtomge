@@ -51,10 +51,6 @@ public class InfoAndActionPanel extends JPanel {
         c.gridx = 7; c.gridy = 2; c.gridwidth = 5; c.gridheight = 1; c.weightx = 0.4; c.weighty = 0.1;
         add(pic,c);
 
-       /* JLabel sep = new JLabel();
-        sep.setText(""+'\u0000');
-        c.gridx = 7; c.gridy = 0; c.gridwidth = 2; c.gridheight = 2; c.weightx = 0.2; c.weighty = 0.8;
-        add(sep,c);*/
 
         move = new JButton("Move");
         move.addActionListener(ae -> Game.move());

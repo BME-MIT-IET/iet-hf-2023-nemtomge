@@ -28,7 +28,6 @@ public class InventoryPanel extends JTabbedPane {
         gear.setSize(d);
         crafted.setSize(d);
         active.setSize(d);
-        //setBounds(50,50,200,200);
         material.setLayout(new FlowLayout());
         gear.setLayout(new FlowLayout());
         crafted.setLayout(new FlowLayout());
