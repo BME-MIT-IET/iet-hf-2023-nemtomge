@@ -14,3 +14,12 @@ Here we can see that after running the analysis, the project got B grade due to 
 
 It' ve found 388 issues in the project, but most of them were minor. 
 The most common issue was that the comments are too long. I couldn't find the way to edit the threshold for the comment lenghts.
+
+Link for the project in Codacy: [LINK](https://app.codacy.com/gh/BME-MIT-IET/iet-hf-2023-nemtomge/dashboard)
+
+
+### Manual analysis
+
+Manual analysis was done on another brach.
+
+Fixed some minor mistakes with a Java Code Review Checklist and with SonarLint
