@@ -21,7 +21,7 @@ public class Inventory {
      * Megadja, hogy egy adott típusú materialból legfeljebb
      * mennyi lehet
      */
-    private static final int maxMaterial = 55;
+    private static final int maxMaterial = 55; 
     /**
      * A Scientist anyagkészlete, melyeket ágensek
      * előállítására használ
@@ -90,8 +90,6 @@ public class Inventory {
         for (Gear g:gears) {
             MgmtResponse=g.actionMgmt(MgmtResponse);
         }
-        //if(MgmtResponse==NEW_FIELD)
-            //return BEAR;
         Skeleton.printReturn(MgmtResponse.toString());
         //Visszaadjuk az actionMgmteken végigfutott MgmtResponse változót.
         return MgmtResponse;
@@ -140,8 +138,6 @@ public class Inventory {
     public boolean add(GeneticCode gc) {
         Skeleton.printCall("Inventory.add(GeneticCode)");
 
-        //Eltárolom a HashSet hosszát, hogy később megvizsgálhassam, hogy nőtt-e ez az érték
-        int gcOldSize = knownGeneticCodes.size();
         // genetic code hozzáadása a listához
         for (GeneticCode tgc : knownGeneticCodes) {
             if (tgc.equals(gc)) {

@@ -90,15 +90,11 @@ public class Scientist {
      */
     public boolean learn(GeneticCode gc) {
         Skeleton.printCall("Scientist.learn()");
-        if (inventory.validateAction(LEARN) == LEARN) {
+        if (inventory.validateAction(LEARN) == LEARN && inventory.add(gc)) {
             // Scientist tud tanulni
             // hozzáadás inventoryhoz. az inventory eldobja a duplikátumot
-            if(inventory.add(gc)) {
-                // az inventorytól elkéri a megtanult genetikai kódokat
-                Set<GeneticCode> knownGeneticCodes = inventory.getKnownGeneticCodes();
                 // a gamenek elküldi a megtanult kódok számát
                 return Game.won(this);
-            }
         }
         return false;
     }
@@ -180,7 +176,7 @@ public class Scientist {
             return false;
         }
         // meg kell nézni, hogy lehet-e egyáltalán geart rabolni:
-        if (this.getInventory().getGears().size() > 0) {
+        if (!this.getInventory().getGears().isEmpty()) {
             // lehet tehát ha nincs elég hely, akkor helyet kell csinálni
             // egészen addig kell próbálkozni amíg nincs elég hely
             while (s.getInventory().getGears().size() >= 3) {

@@ -16,6 +16,7 @@ public class Storage extends Field {
      * Visszaadja azt az ItemPackage objektumot, mely olyan objektumokat tartalmaz, melyet a mező tárol.
      * @return A mezőn tárolt objektumokat tartalmazó ItemPackage objektum
      */
+    @Override
     public ItemPackage touched() {
         Skeleton.printCall("Storage.touched()");
         ItemPackage ip = new ItemPackage();

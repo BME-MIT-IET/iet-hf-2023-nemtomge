@@ -648,11 +648,9 @@ public class Game {
         Set<GeneticCode> gc = s.getKnownGeneticCodes();
         for (GeneticCode g : gc) {
             if (g.getClass().getSimpleName().equals(args[3])) {
-                //.out.println("Scientist " + s.getName() + " has gencode " + g.getDetails());
                 return;
             }
         }
-        //System.out.println("Scientist " + s.getName() + " doesn't have gencode " + args[3]);
     }
 
     /**

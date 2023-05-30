@@ -125,8 +125,6 @@ public class MainWindow {
 
         JButton start = new JButton("Start Game");
         start.addActionListener(e -> {
-            //game = new Game();
-            //game.setup((String[])playerNames.toArray());
             if(playerNames.size() > 1) {
                 try {
                     Game.setup(playerNames);
