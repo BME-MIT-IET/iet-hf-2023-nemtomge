@@ -16,14 +16,18 @@ public class ParameterTypes {
     public Scientist Scientist(String text) {
         return new Scientist();
     }
+    
     @ParameterType("Field")
     public Field Field(String text){ return new Field(); }
+    
     @ParameterType("Lab")
     public Lab Lab(String text){
         boolean INIT_BEAR_DANCE = false;
         return new Lab(INIT_BEAR_DANCE); }
+    
     @ParameterType("Immunity")
     public Immunity Immunity(String text) { return new Immunity(INIT_DURATION); }
+    
     @ParameterType("Dementia|Stun|Bear")
     public Agent agent(String agentText){
         Agent agent;
@@ -35,6 +39,7 @@ public class ParameterTypes {
         }
         return agent;
     }
+    
     @ParameterType("Axe")
     public Gear gear (String gearText){
         Gear gear;
