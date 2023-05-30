@@ -108,3 +108,5 @@ fabric.properties
 bin/
 
 .vagrant/
+# Docs
+docs/4-bdd-with-cucumber.docx

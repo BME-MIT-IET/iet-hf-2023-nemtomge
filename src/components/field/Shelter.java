@@ -10,6 +10,7 @@ public class Shelter extends Field {
      * Visszaadja azt az ItemPackage objektumot, mely olyan objektumokat tartalmaz, melyet a mező tárol.
      * @return A mezőn tárolt objektumokat tartalmazó ItemPackage objektum
      */
+    @Override
     public ItemPackage touched() {
         Skeleton.printCall("Shelter.touched()");
         ItemPackage ip = new ItemPackage();
