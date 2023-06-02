@@ -1,0 +1,2 @@
+- name: Setup hungarian keyboard layout on Ubuntu
+  become: yes

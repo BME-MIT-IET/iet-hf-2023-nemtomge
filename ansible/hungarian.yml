@@ -1,0 +1,5 @@
+- name: Install Hungarian language
+  become: yes
+  apt:
+    name: language-pack-hu
+    state: present

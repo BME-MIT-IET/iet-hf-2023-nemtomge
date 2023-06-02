@@ -1,0 +1,5 @@
+- name: Install OpenJDK 17 JDK
+  become: true
+  apt:
+    name: openjdk-17-jdk
+    state: present

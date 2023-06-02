@@ -1,0 +1,16 @@
+---
+- name: Clone Git repository
+  vars:
+    repo_url: "{{ git_repository_url }}"
+    repo_dest: "/home/vagrant/iet-hf-2023-nemtomge"
+  tasks:
+    - name: Check if repo directory exists
+      stat:
+        path: "{{ repo_dest }}"
+      register: repo_stat
+    - name: Clone repo if it does not exist
+      git:
+        repo: "{{ repo_url }}"
+        dest: "{{ repo_dest }}"
+        clone: yes
+      when: not repo_stat.stat.exists
